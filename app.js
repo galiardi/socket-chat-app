@@ -2,10 +2,6 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const myEmitter = require('./myEmitter');
-// const EventEmitter = require('events');
-
-// const myEmitter = new EventEmitter();
-// myEmitter.on('node-client message', (msg) => console.log(msg));
 
 const app = express();
 
@@ -27,7 +23,7 @@ app.get('/sse', (req, res) => {
   });
 
   const onMessage = (msg) => {
-    res.write(`data: ${msg}\n\n`);
+    res.write(msg);
   }
 
   myEmitter.on('client message', onMessage);
