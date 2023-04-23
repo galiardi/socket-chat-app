@@ -4,10 +4,13 @@ const listen = (io) => {
 
     socket.on('client message', (msg) => {
       io.emit('server message', `${socket.id}: ${msg}`);
-    })
+    });
+    socket.on('disconnect', () => {
+      console.log(`${socket.id} disconnected`);
+    });
   });
 };
 
 module.exports = {
-  listen
+  listen,
 };

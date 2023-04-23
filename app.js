@@ -8,7 +8,7 @@ const app = express();
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/download-node-client', (req, res) => {
-  const readFile = fs.createReadStream('node-client.zip');
+  const readFile = fs.createReadStream(path.join(__dirname, 'public', 'node-client.zip'));
 
   readFile.pipe(res);
 
